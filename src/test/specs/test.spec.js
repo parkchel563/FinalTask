@@ -13,7 +13,7 @@ describe("End-to-end checkout", () => {
     
     await expect(browser).toHaveUrl(pages('inventory').url)
     
-    await pages('inventory').inventoryComponent.addToCartBtn.click()
+    await pages('inventory').inventoryComponent.addToCart("Sauce Labs Backpack")
     
     await expect(pages('inventory').headerComponent.cartBadge).toHaveText("1")
     

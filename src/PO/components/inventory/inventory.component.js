@@ -6,9 +6,8 @@ class InventoryComponent extends BaseComponent{
         super('.inventory_item')
     }
 
-
-    get addToCartBtn(){
-        return this.rootEl.$('.btn_primary')
+    async addToCart(itemName){
+        await $(`//div[text()="${itemName}"]/ancestor::div[@class="inventory_item"]//button`).click();
     }
 }
 
