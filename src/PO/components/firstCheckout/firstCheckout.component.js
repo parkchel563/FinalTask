@@ -6,16 +6,13 @@ class FirstCheckoutComponent extends BaseComponent{
         super('.checkout_info')
     }
 
-    get name(){
-        return this.rootEl.$('#first-name')
-    }
-
-    get surname(){
-        return this.rootEl.$('#last-name')
-    }
-
-    get postalCode(){
-        return this.rootEl.$('#postal-code')
+    input(param){
+        const selectors = {
+            name: '#first-name',
+            surname: '#last-name',
+            postalCode: '#postal-code'
+        }
+        return $(selectors[param])
     }
 
     get continueBtn(){

@@ -23,9 +23,9 @@ describe("End-to-end checkout", () => {
     
     await pages('cart').cartComponent.confirmBtn.click()
     
-    await pages('firstCheckout').firstCheckoutComponent.name.setValue("Mykyta")
-    await pages('firstCheckout').firstCheckoutComponent.surname.setValue("Zaitsev")
-    await pages('firstCheckout').firstCheckoutComponent.postalCode.setValue("61100")
+    await pages('firstCheckout').firstCheckoutComponent.input('name').setValue("Mykyta")
+    await pages('firstCheckout').firstCheckoutComponent.input('surname').setValue("Zaitsev")
+    await pages('firstCheckout').firstCheckoutComponent.input('postalCode').setValue("61100")
     
     await pages('firstCheckout').firstCheckoutComponent.continueBtn.click()
     
