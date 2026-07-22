@@ -6,8 +6,21 @@ class InventoryComponent extends BaseComponent{
         super('.inventory_item')
     }
 
-    async addToCart(itemName){
-        await $(`//div[text()="${itemName}"]/ancestor::div[@class="inventory_item"]//button`).click();
+    get items() {
+    return $$('.inventory_item');
+    }
+
+    async addToCart(itemName) {
+    const items = await this.items;
+
+    for(let item of items){
+         const name = await item.$('.inventory_item_name ').getText()
+
+         if(name == itemName){
+            await item.$('button').click()
+            break;
+         }
+    }
     }
 }
 
