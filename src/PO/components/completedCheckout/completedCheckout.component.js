@@ -1,13 +1,13 @@
+const BaseComponent = require('../common/base.component')
 
-class CompletedCheckoutComponent {
+class CompletedCheckoutComponent extends BaseComponent{
 
-    
-    get RootEl(){
-        return $('#checkout_complete_container')
+    constructor(){
+        super('#checkout_complete_container')
     }
 
     get completeHeader(){
-        return this.RootEl.$('.complete-header')
+        return this.rootEl.$('.complete-header')
     }
 }
 

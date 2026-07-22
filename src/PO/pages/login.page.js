@@ -1,13 +1,13 @@
-const LoginComponent = require('../../PO/components/login/login.component')
+const {LoginComponent} = require('../../PO/components/index')
+const BasePage = require('../pages/base.page')
 
-class LoginPage {
+class LoginPage extends BasePage{
 
     constructor(){
+        super('/')
         this.loginComponent = new LoginComponent()
     }
-   async open(){
-        await browser.url('https://www.saucedemo.com/')
-    }
+
 }
 
 module.exports = LoginPage;

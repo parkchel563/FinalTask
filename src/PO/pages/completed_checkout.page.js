@@ -1,17 +1,14 @@
 
-const HeaderComponent = require("../components/common/header.component");
-const CompletedCheckoutComponent = require('../components/completedCheckout/completedCheckout.component.js')
+const {CompletedCheckoutComponent} = require('../components/index')
+const BasePage = require('../pages/base.page')
 
-class CompletedCheckout{
+class CompletedCheckoutPage extends BasePage{
 
     constructor(){
-        this.headerComponent = new HeaderComponent()
+        super('/checkout-complete.html')
         this.completedCheckoutComponent = new CompletedCheckoutComponent()
     }
 
-    async open(){
-        browser.url('https://www.saucedemo.com/checkout-complete.html')
-    }
 }
 
-module.exports = CompletedCheckout;
+module.exports = CompletedCheckoutPage;

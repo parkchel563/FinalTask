@@ -1,7 +1,9 @@
-class LoginComponent{
-    
-    get rootEl(){
-        return $('#login_button_container')
+const BaseComponent = require('../common/base.component')
+
+class LoginComponent extends BaseComponent{
+
+    constructor(){
+        super('#login_button_container')
     }
 
     get name(){

@@ -10,7 +10,8 @@ const SecondCheckoutPage = require('../../PO/pages/second_checkout.page')
 
 const CompletedCheckoutPage = require('../../PO/pages/completed_checkout.page')
 
-const loginPage = new LoginPage()
+const {pages } = require('../../PO/index')
+
 const inventoryPage = new InventoryPage()
 const cartPage = new CartPage()
 const firstCheckout = new FirstCheckout()
@@ -20,35 +21,35 @@ const completedCheckout = new CompletedCheckoutPage()
 describe("End-to-end checkout", () => {
   it("Should complete checkout successfully", async () => {
     
-    await loginPage.open()
+    await pages('login').open()
     
-    await loginPage.loginComponent.name.setValue("standard_user")
+    await pages('login').loginComponent.name.setValue("standard_user")
     
-    await loginPage.loginComponent.password.setValue("secret_sauce")
+    await pages('login').loginComponent.password.setValue("secret_sauce")
     
-    await loginPage.loginComponent.loginBtn.click()
+    await pages('login').loginComponent.loginBtn.click()
     
-    await expect(browser).toHaveUrl(inventoryPage.url)
+    await expect(browser).toHaveUrl(pages('inventory').url)
     
-    await inventoryPage.inventoryComponent.addToCartBtn.click()
+    await pages('inventory').inventoryComponent.addToCartBtn.click()
     
-    expect(inventoryPage.headerComponent.cartContainer).toHaveText("1")
+    await expect(pages('inventory').headerComponent.cartBadge).toHaveText("1")
     
-    await inventoryPage.headerComponent.cartBadge.click()
+    await pages('inventory').headerComponent.cartBadge.click()
     
-    expect(cartPage.cartComponent.inventoryItemName).toHaveText("Sauce Labs Backpack")
+    await expect(pages('cart').cartComponent.inventoryItemName).toHaveText("Sauce Labs Backpack")
     
-    await cartPage.cartComponent.confirmBtn.click()
+    await pages('cart').cartComponent.confirmBtn.click()
     
-    await firstCheckout.firstCheckoutComponent.name.setValue("Mykyta")
-    await firstCheckout.firstCheckoutComponent.surname.setValue("Zaitsev")
-    await firstCheckout.firstCheckoutComponent.postalCode.setValue("61100")
+    await pages('firstCheckout').firstCheckoutComponent.name.setValue("Mykyta")
+    await pages('firstCheckout').firstCheckoutComponent.surname.setValue("Zaitsev")
+    await pages('firstCheckout').firstCheckoutComponent.postalCode.setValue("61100")
     
-    await firstCheckout.firstCheckoutComponent.continueBtn.click()
+    await pages('firstCheckout').firstCheckoutComponent.continueBtn.click()
     
-    await secondCheckout.secondCheckoutComponent.finishBtn.click()
+    await pages('secondCheckout').secondCheckoutComponent.finishBtn.click()
     
-    completedCheckout.completedCheckoutComponent.completeHeader.toHaveText("Thank you for your order!")
+    await expect(pages('completedCheckout').completedCheckoutComponent.completeHeader).toHaveText("Thank you for your order!")
     
   
   })

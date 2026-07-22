@@ -1,8 +1,11 @@
-class InventoryComponent {
+const BaseComponent = require('../common/base.component')
 
-    get rootEl(){
-        return $('.inventory_item')
+class InventoryComponent extends BaseComponent{
+
+    constructor(){
+        super('.inventory_item')
     }
+
 
     get addToCartBtn(){
         return this.rootEl.$('.btn_primary')

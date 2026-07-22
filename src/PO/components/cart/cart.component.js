@@ -1,10 +1,13 @@
-class CartComponent{
-    get itemRootEl(){
-        return $('.cart_item')
+const BaseComponent = require('../common/base.component')
+
+class CartComponent extends BaseComponent{
+
+    constructor(){
+        super('.cart_item');
     }
 
     get inventoryItemName(){
-        return this.itemRootEl.$('.inventory_item_name')
+        return this.rootEl.$('.inventory_item_name')
     }
 
     get confirmBtn(){

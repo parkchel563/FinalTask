@@ -1,16 +1,13 @@
-const HeaderComponent = require('../components/common/header.component')
-const CartComponent = require('../components/cart/cart.component')
+const {CartComponent} = require('../components/index')
+const BasePage = require('../pages/base.page')
 
-class CartPage{
+class CartPage extends BasePage{
 
     constructor(){
-        this.headerComponent = new HeaderComponent()
+        super('/cart.html')
         this.cartComponent = new CartComponent()
     }
 
-    async open(){
-        browser.url('https://www.saucedemo.com/cart.html')
-    }
 }
 
 module.exports = CartPage;

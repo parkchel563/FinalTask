@@ -1,19 +1,21 @@
-class FirstCheckoutComponent{
+const BaseComponent = require('../common/base.component')
 
-    get rootFormEl(){
-        return $('.checkout_info')
+class FirstCheckoutComponent extends BaseComponent{
+
+    constructor(){
+        super('.checkout_info')
     }
 
     get name(){
-        return this.rootFormEl.$('#first-name')
+        return this.rootEl.$('#first-name')
     }
 
     get surname(){
-        return this.rootFormEl.$('#last-name')
+        return this.rootEl.$('#last-name')
     }
 
     get postalCode(){
-        return this.rootFormEl.$('#postal-code')
+        return this.rootEl.$('#postal-code')
     }
 
     get continueBtn(){
