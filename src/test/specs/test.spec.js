@@ -52,7 +52,7 @@ describe("End-to-end checkout", () => {
     
         await pages('login').loginComponent.loginBtn.click()
 
-        if(user.error){
+        if(await errorMessage.isExisting()){
           await expect(errorMessage).toHaveText(user.error)
         }else{
           await expect(browser).toHaveUrl(pages('inventory').url)
