@@ -1,5 +1,7 @@
 const { pages } = require('../../PO/index')
 
+const users = require('../../data/users')
+
 describe("End-to-end checkout", () => {
   it("Should complete checkout successfully", async () => {
     
@@ -33,8 +35,31 @@ describe("End-to-end checkout", () => {
     
     await expect(pages('completedCheckout').completedCheckoutComponent.completeHeader).toHaveText("Thank you for your order!")
     
-  
   })
+  
+})
+describe("End-to-end checkout", () => {
+  
+    users.forEach(user => {
+      it(`Login as ${user.name}`, async () => {
+        const errorMessage = $('.error-message-container.error')
+
+        await pages('login').open()
+    
+        await pages('login').loginComponent.name.setValue(user.name)
+    
+        await pages('login').loginComponent.password.setValue(user.password)
+    
+        await pages('login').loginComponent.loginBtn.click()
+
+        if(user.error){
+          await expect(errorMessage).toHaveText(user.error)
+        }else{
+          await expect(browser).toHaveUrl(pages('inventory').url)
+        }
+
+        })
+    });
   
 })
 
