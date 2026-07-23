@@ -1,3 +1,42 @@
+## Running Tests
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run all tests:
+
+```bash
+npm run wdio
+```
+
+The tests will run in:
+
+- Google Chrome
+- Microsoft Edge
+
+in parallel.
+
+---
+
+## Generating Allure Report
+
+After the test execution, generate the report:
+
+```bash
+npx allure generate allure-results --clean -o allure-report
+```
+
+Open the report:
+
+```bash
+npx allure open allure-report
+```
+
+---
+
 "End-to-End" Flow
 
 Focus: Happy path execution and checkout logic.
