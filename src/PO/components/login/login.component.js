@@ -6,6 +6,10 @@ class LoginComponent extends BaseComponent{
         super('#login_button_container')
     }
 
+    get errorMessage(){
+        return this.rootEl.$('.error-message-container.error')
+    }
+
     get name(){
         return this.rootEl.$('#user-name')
     }
